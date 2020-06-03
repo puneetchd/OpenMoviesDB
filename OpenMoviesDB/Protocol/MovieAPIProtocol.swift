@@ -9,6 +9,6 @@
 import Foundation
 
 protocol MovieAPIProtocol {
-    func searchMoviesWithName(forMovieName: String, completionHandler: @escaping MoviesSearchSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler)
+    func searchMoviesWithName(forMovieName: String, forPageNumber: Int, completionHandler: @escaping MoviesSearchSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler)
     func getMovieDetails(forMovieId: String, completionHandler: @escaping MoviesDetailsSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler)
 }

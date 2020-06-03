@@ -11,8 +11,8 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     private let viewModel: MovieDetailsViewModel = MovieDetailsViewModel(apiHandler: MoviesAPIHandler())
-    var movieId:String!
-    
+    var movieId: String!
+
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var movieImgView: UIImageView!
     @IBOutlet weak var lblMovieTitle: UILabel!
@@ -27,13 +27,13 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var lblCountry: UILabel!
     @IBOutlet weak var lblAwards: UILabel!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addHandlers()
         viewModel.fetchMovieDetailForId(movieId: movieId)
     }
-    
+
     private func addHandlers() {
         viewModel.callbackHandler = { [weak self] (callbackType: Callback) in
             if let weakSelf: MovieDetailsViewController = self {
@@ -57,7 +57,7 @@ class MovieDetailsViewController: UIViewController {
             }
         }
     }
-    
+
     func setMovieDetailsToView() {
         movieImgView.loadImageUsingCache(withUrl: viewModel.getImageURL())
         lblMovieTitle.text = viewModel.getMovieTitle()

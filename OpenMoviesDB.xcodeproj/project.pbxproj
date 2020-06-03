@@ -39,6 +39,12 @@
 		7315C64624876E4D00A5E3EB /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315C64424876E4D00A5E3EB /* MovieDetailsViewModel.swift */; };
 		7353C61E2487777E006FA11E /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C61D2487777E006FA11E /* MovieListCell.swift */; };
 		7353C61F2487777E006FA11E /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C61D2487777E006FA11E /* MovieListCell.swift */; };
+		7353C62124880BFB006FA11E /* MoviesDataModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C62024880BFB006FA11E /* MoviesDataModelTest.swift */; };
+		7353C62324880E39006FA11E /* MoviesListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C62224880E39006FA11E /* MoviesListViewModelTest.swift */; };
+		7353C62624880E6D006FA11E /* MockMoviesListResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7353C62424880E6D006FA11E /* MockMoviesListResponse.json */; };
+		7353C62724880E6D006FA11E /* MockMoviesListResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7353C62424880E6D006FA11E /* MockMoviesListResponse.json */; };
+		7353C62824880E6D006FA11E /* MockMoviesAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C62524880E6D006FA11E /* MockMoviesAPIHandler.swift */; };
+		7353C62924880E6D006FA11E /* MockMoviesAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353C62524880E6D006FA11E /* MockMoviesAPIHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +81,10 @@
 		7315C64124876E3D00A5E3EB /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		7315C64424876E4D00A5E3EB /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		7353C61D2487777E006FA11E /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
+		7353C62024880BFB006FA11E /* MoviesDataModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataModelTest.swift; sourceTree = "<group>"; };
+		7353C62224880E39006FA11E /* MoviesListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModelTest.swift; sourceTree = "<group>"; };
+		7353C62424880E6D006FA11E /* MockMoviesListResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockMoviesListResponse.json; sourceTree = "<group>"; };
+		7353C62524880E6D006FA11E /* MockMoviesAPIHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMoviesAPIHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				730E44FD248758DE002954E7 /* OpenMoviesDBTests.swift */,
+				7353C62024880BFB006FA11E /* MoviesDataModelTest.swift */,
+				7353C62224880E39006FA11E /* MoviesListViewModelTest.swift */,
 				730E44FF248758DE002954E7 /* Info.plist */,
 			);
 			path = OpenMoviesDBTests;
@@ -174,6 +186,8 @@
 		7315C61624875A1200A5E3EB /* MockHandler */ = {
 			isa = PBXGroup;
 			children = (
+				7353C62524880E6D006FA11E /* MockMoviesAPIHandler.swift */,
+				7353C62424880E6D006FA11E /* MockMoviesListResponse.json */,
 			);
 			path = MockHandler;
 			sourceTree = "<group>";
@@ -311,6 +325,7 @@
 			files = (
 				730E44F3248758DE002954E7 /* LaunchScreen.storyboard in Resources */,
 				730E44F0248758DE002954E7 /* Assets.xcassets in Resources */,
+				7353C62624880E6D006FA11E /* MockMoviesListResponse.json in Resources */,
 				730E44EE248758DD002954E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7353C62724880E6D006FA11E /* MockMoviesListResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +352,7 @@
 				7315C63B248764B100A5E3EB /* DataMoviesModel.swift in Sources */,
 				7353C61E2487777E006FA11E /* MovieListCell.swift in Sources */,
 				7315C63524875EF100A5E3EB /* MovieAPIProtocol.swift in Sources */,
+				7353C62824880E6D006FA11E /* MockMoviesAPIHandler.swift in Sources */,
 				7315C62224875A1200A5E3EB /* GlobalExtensions.swift in Sources */,
 				7315C62624875A1200A5E3EB /* GlobalUtils.swift in Sources */,
 				7315C64224876E3D00A5E3EB /* MoviesListViewModel.swift in Sources */,
@@ -354,9 +371,11 @@
 				7315C63924875F1700A5E3EB /* MoviesAPIHandler.swift in Sources */,
 				7315C62324875A1200A5E3EB /* GlobalExtensions.swift in Sources */,
 				7315C63624875EF100A5E3EB /* MovieAPIProtocol.swift in Sources */,
+				7353C62324880E39006FA11E /* MoviesListViewModelTest.swift in Sources */,
 				7315C64324876E3D00A5E3EB /* MoviesListViewModel.swift in Sources */,
 				7315C62D24875A1200A5E3EB /* NetworkError.swift in Sources */,
 				7315C63324875ACB00A5E3EB /* MovieDetailsViewController.swift in Sources */,
+				7353C62124880BFB006FA11E /* MoviesDataModelTest.swift in Sources */,
 				7315C63F248766F000A5E3EB /* DataMovieDetailsModel.swift in Sources */,
 				7315C63024875A6600A5E3EB /* MoviesListViewController.swift in Sources */,
 				7315C64624876E4D00A5E3EB /* MovieDetailsViewModel.swift in Sources */,
@@ -365,6 +384,7 @@
 				730E44FE248758DE002954E7 /* OpenMoviesDBTests.swift in Sources */,
 				7353C61F2487777E006FA11E /* MovieListCell.swift in Sources */,
 				7315C62B24875A1200A5E3EB /* BaseNetworkAPI.swift in Sources */,
+				7353C62924880E6D006FA11E /* MockMoviesAPIHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMoviesDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMoviesDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

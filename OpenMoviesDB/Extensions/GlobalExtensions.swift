@@ -11,10 +11,9 @@ import UIKit.UIImageView
 
 typealias CallbackHandler = (_ callbackType: Callback) -> Void
 typealias NetworkAPIHandler = (_ data: Data?, _ error: NetworkError?) -> Void
-typealias MoviesSearchSuccessCompletionHandler = (_ moviesList: [Movie]?) -> Void
+typealias MoviesSearchSuccessCompletionHandler = (_ moviesList: DataMoviesModel?) -> Void
 typealias MoviesDetailsSuccessCompletionHandler = (_ moviesList: DataMovieDetailsModel?) -> Void
 typealias MoviesRequestErrorHandler = (_ error: NetworkError?) -> Void
-
 
 enum NetworkRequestType: String {
     case get = "GET"
@@ -79,5 +78,18 @@ extension UIImageView {
                 }
             }
         ).resume()
+    }
+}
+
+extension UICollectionView {
+    func scrollToTop() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        if self.hasRowAtIndexPath(indexPath: indexPath) {
+            self.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
+    }
+
+    func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
+        return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfItems(inSection: indexPath.section)
     }
 }

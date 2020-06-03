@@ -12,20 +12,35 @@ class MoviesListViewModel {
     private let networkHandler: MovieAPIProtocol
     var callbackHandler: CallbackHandler?
     var isFetchingResults = false
-    var movies: [Movie]?
+    var hasMore = true
+    var movies: [Movie] = []
+    private var currentPage = 1
 
     //MARK:- Init Methods
     init(apiHandler: MovieAPIProtocol) {
         networkHandler = apiHandler
     }
 
-    func fetchMoviesForSearchTerm(titleName: String) {
-        self.isFetchingResults = false
-        if titleName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 { return }
+    func startFreshMoviesSearch(titleName: String) {
+        movies.removeAll()
+        currentPage = 1
+        fetchMoviesForSearchTerm(movieName: titleName)
+    }
+
+    func fetchMoviesForSearchTerm(movieName: String) {
+        self.isFetchingResults = true
+        if movieName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 { return }
         networkHandler.searchMoviesWithName(
-            forMovieName: titleName,
-            completionHandler: { [weak self] (moviesList) in
-                self?.movies = moviesList
+            forMovieName: movieName, forPageNumber: currentPage,
+            completionHandler: { [weak self] (moviesModel) in
+                self?.movies.append(contentsOf: moviesModel?.moviesList ?? [])
+                if (self?.getNoOfMovies())! < Int(moviesModel?.totalResults ?? "") ?? 0 {
+                    self?.hasMore = true
+                    self?.currentPage += 1
+                } else {
+                    self?.hasMore = false
+                }
+                self?.isFetchingResults = false
                 self?.callbackHandler?(Callback.reloadContent)
             }
         ) { (networkError) in
@@ -36,10 +51,10 @@ class MoviesListViewModel {
     }
 
     func movieObjectAt(at index: Int) -> Movie {
-        return movies![index]
+        return movies[index]
     }
 
     func getNoOfMovies() -> Int {
-        return movies?.count ?? 0
+        return movies.count
     }
 }

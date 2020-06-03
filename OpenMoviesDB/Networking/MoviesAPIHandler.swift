@@ -14,15 +14,15 @@ class MoviesAPIHandler: MovieAPIProtocol {
 
     private let networkHandler = BaseNetworkAPI.shared
 
-    func searchMoviesWithName(forMovieName: String, completionHandler: @escaping MoviesSearchSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler) {
-        let requestModel: NetworkRequestModel = NetworkRequestModel(requestType: NetworkRequestType.get, url: "\(kBaseUrl)&s=\(forMovieName)&type=movie", parameters: nil, headers: nil)
-
+    func searchMoviesWithName(forMovieName: String, forPageNumber: Int, completionHandler: @escaping MoviesSearchSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler) {
+        let requestModel: NetworkRequestModel = NetworkRequestModel(requestType: NetworkRequestType.get, url: "\(kBaseUrl)&s=\(forMovieName)&type=movie&page=\(forPageNumber)", parameters: nil, headers: nil)
+        print("Invoking request : " + requestModel.url)
         networkHandler.createRequest(networkRequestModel: requestModel) { (data, networkError) in
             if let dataResponse: Data = data {
                 do {
                     let decoder: JSONDecoder = JSONDecoder()
                     let models: DataMoviesModel = try decoder.decode(DataMoviesModel.self, from: dataResponse)
-                    completionHandler(models.moviesList)
+                    completionHandler(models)
                 } catch let parsingError {
                     if let errorResponse = try? JSONDecoder().decode(MovieResponseError.self, from: dataResponse) {
                         errorHandler(.genericError(code: 400, message: errorResponse.errorMessage))
@@ -36,7 +36,7 @@ class MoviesAPIHandler: MovieAPIProtocol {
         }
     }
 
-    func getMovieDetails(forMovieId: String, completionHandler: @escaping MoviesDetailsSuccessCompletionHandler , errorHandler: @escaping MoviesRequestErrorHandler) {
+    func getMovieDetails(forMovieId: String, completionHandler: @escaping MoviesDetailsSuccessCompletionHandler, errorHandler: @escaping MoviesRequestErrorHandler) {
         let requestModel: NetworkRequestModel = NetworkRequestModel(requestType: NetworkRequestType.get, url: "\(kBaseUrl)&i=\(forMovieId)", parameters: nil, headers: nil)
 
         networkHandler.createRequest(networkRequestModel: requestModel) { (data, networkError) in

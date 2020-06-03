@@ -71,12 +71,17 @@ extension MoviesListViewController: UICollectionViewDelegate, UICollectionViewDa
 extension MoviesListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         view.endEditing(true)
+        let contentOffsetY = scrollView.contentOffset.y
+        if contentOffsetY >= (scrollView.contentSize.height - scrollView.bounds.height) && !viewModel.isFetchingResults && viewModel.hasMore {
+            viewModel.fetchMoviesForSearchTerm(movieName: topSearchBar.text ?? "")
+        }
     }
 }
 
 extension MoviesListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.fetchMoviesForSearchTerm(titleName: searchBar.text ?? "")
+        moviesListCollectionView.scrollToTop()
+        viewModel.startFreshMoviesSearch(titleName: searchBar.text ?? "")
         view.endEditing(true)
     }
 
